@@ -1,0 +1,13 @@
+ @keyframes :global(blur) {
+     from {
+         opacity: 0;
+         filter: blur(0);
+     }
+     to {
+         filter: blur(.2);
+         opacity: 1;
+     }
+ }
+ div {
+     color: black;
+ }
