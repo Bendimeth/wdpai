@@ -6,7 +6,7 @@ class DefaultController extends AppController {
 
     public function index() {
         // display login.html
-        die('login');
+        $this->render('login');
     }
 
     public function project() {
