@@ -67,6 +67,15 @@ button:hover {
 	background: #385fd1;
 }
 
+.no-valid {
+	border: 2px solid red;
+	box-shadow: red 1px 1px 4px;
+}
+
+.no-valid:focus-visible {
+	outline: none;
+}
+
 /* queries */
 
 @media screen and (min-width: 300px) and (orientation: portrait) {
