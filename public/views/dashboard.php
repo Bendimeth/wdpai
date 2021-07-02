@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/dashboard.css">
     <script src="https://kit.fontawesome.com/4d687a4b1f.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="public/js/main.js" type="application/javascript" defer></script>
     <script src="public/js/header.js" type="application/javascript" defer></script>
     <script src="public/js/dashboard.js" type="application/javascript" defer></script>
     <title>ActivityLog - dashboard</title>

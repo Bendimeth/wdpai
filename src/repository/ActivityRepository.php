@@ -43,7 +43,7 @@ class ActivityRepository extends Repository
     {
         $database = new Database();
         $stmt = $database->connect()->prepare('
-            SELECT a.id, a.id_assigned_by, a.title, a.description, a.created_at, u.name, u.surname, a.photo from activities a join users u on u.id = a.id_assigned_by
+            SELECT a.id, a.id_assigned_by, a.title, a.description, a.created_at, u.name, u.surname, a.photo, u.photo as user_photo from activities a join users u on u.id = a.id_assigned_by
         ');
         $stmt->execute();
 
@@ -61,7 +61,8 @@ class ActivityRepository extends Repository
                     "userName" => $activity['name'],
                     "userSurname" => $activity['surname'],
                     "assignedById" => $activity['id_assigned_by'],
-                    "activityId" => $activity['id']
+                    "activityId" => $activity['id'],
+                    "userPhoto" => $activity['user_photo'],
                 ));
             }
         }

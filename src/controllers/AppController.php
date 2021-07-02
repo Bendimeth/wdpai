@@ -22,11 +22,16 @@ class AppController {
         if (file_exists($templatePath)) {
             extract($variables);
 
-            ob_start();
-            include $templatePath;
-            $output = ob_get_clean();
+        } else if ($template === '') {
+            $templatePath = 'public/views/login.php';
+        } else {
+            $templatePath = 'public/views/404.php';
         }
+
+        ob_start();
+        include $templatePath;
+        $output = ob_get_clean();
+
         print $output;
-        var_dump($templatePath);
     }
 }

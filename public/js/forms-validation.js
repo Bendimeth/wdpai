@@ -113,7 +113,6 @@ const registerNewUser = () => {
                     setHintMessage('Create account');
                     setHeaderMessage('Sign in to your ActivityLog account');
                     setSubmitButtonMessage('Login');
-                    setFormAction(currentForm);
                     showInputs(currentForm);
                 } else {
                     document.querySelector('.info').innerHTML = 'Registration failed, please check the form';
@@ -131,7 +130,6 @@ const login = () => {
             email: emailInput.value,
             password: passwordInput.value
         }, response => {
-            console.log(response);
             if (response === '1') {
                 document.querySelector('.info').innerHTML = 'Wrong name/password, please try again';
             } else {

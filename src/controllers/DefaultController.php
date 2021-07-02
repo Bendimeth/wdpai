@@ -11,4 +11,12 @@ class DefaultController extends AppController {
     public function settings() {
         $this->render('settings');
     }
+
+    public function notFound() {
+        $this->render('404');
+    }
+
+    public function main() {
+        $this->render('');
+    }
 }

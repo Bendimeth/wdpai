@@ -26,8 +26,6 @@ class SettingsController extends AppController {
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
         }
-
-        echo('doopa');
         $this->render('settings', []);
     }
 

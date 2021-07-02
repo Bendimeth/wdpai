@@ -8,6 +8,8 @@ $path = parse_url($path, PHP_URL_PATH);
 Routing::get('login', 'DefaultController');
 Routing::get('dashboard', 'DashboardController');
 Routing::get('settings', 'DefaultController');
+Routing::get('notFound', 'DefaultController');
+Routing::get('main', 'DefaultController');
 
 Routing::post('login', 'SecurityController');
 Routing::post('updatePhoto', 'SettingsController');

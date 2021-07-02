@@ -54,6 +54,9 @@ const renderItems = (activity) => {
                         <div class="activity-user-details">
                             <div class="section-label">${activity.createdAt}</div>
                             <div>
+                                ${activity.userPhoto ? `
+                                    <div class="photo" style="background-image: url(${activity.userPhoto})"></div>
+                                ` : ''}
                                 <span>${activity.userName}</span>
                                 <span>${activity.userSurname}</span>
                             </div>
@@ -119,6 +122,7 @@ const getAllActivities = () => {
             currentSearch.innerHTML = 'All activities';
             console.log('currentUser',currentUser)
             const activities = JSON.parse(response).map(activity => JSON.parse(activity));
+            console.log(activities)
             activities.reverse().forEach(activity => {
                 renderItems(activity);
             })
@@ -133,23 +137,13 @@ const createActivity = () => {
             title: newActivityTitle.value,
             description: newActivityDesc.value,
             assignedById: currentUser.id,
-            photo: newActivityPhoto.value ? `public/uploads/${newActivityPhoto.value.split('\\')[newActivityPhoto.value.split('\\').length -1]}` : ''
+            photo: newActivityPhoto.value ? parseFilePath(newActivityPhoto.value) : ''
         }, () => {
             changePopupVisibility();
             searchMine ? getMineActivities() : getAllActivities();
         })
         if (newActivityPhoto.value) {
-            const fd = new FormData();
-            const files = $('.dashboard-body .popup input[name=file]')[0].files[0];
-            fd.append('file', files);
-
-            $.ajax({
-                url: 'src/utils/uploadFile.php',
-                type: 'post',
-                data: fd,
-                contentType: false,
-                processData: false
-            });
+            uploadImage($('.dashboard-body .popup input[name=file]')[0].files[0]);
         }
     }
 }

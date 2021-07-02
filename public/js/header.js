@@ -2,8 +2,7 @@
 const dropdown = document.querySelector('.dropdown');
 const iconAngleUp = document.querySelector('.fa-angle-up');
 const iconAngleDown = document.querySelector('.fa-angle-down');
-const userName = document.querySelector('.name');
-const userSurname = document.querySelector('.surname');
+
 const userPhoto = document.querySelector('.user-photo');
 const initials = document.querySelector('.user-photo span');
 const currentPath = document.querySelector('.current-path');
@@ -23,9 +22,7 @@ if (localStorage.getItem('currentUserId')) {
     const nameByPath = {
         dashboard: 'Dashboard',
         settings: 'Settings',
-        archived: 'Past activities',
-        '404': 'No such page',
-        createLog: 'Dashboard'
+        archived: 'Past activities'
     }
 
     currentUser.name = localStorage.getItem('name');
@@ -34,20 +31,18 @@ if (localStorage.getItem('currentUserId')) {
     currentUser.photo = localStorage.getItem('photo');
     currentUser.id = localStorage.getItem('currentUserId');
 
-    if (currentUser.photo !== 'null') {
-        userPhoto.style.backgroundImage = currentUser.photo;
+    if (currentUser.photo !== 'null' && currentUser.photo !== '') {
+        userPhoto.innerHTML = `
+            <div class="photo" style="background-image: url(${currentUser.photo})"></div>
+        `;
     } else {
         initials.innerHTML = currentUser.name[0].toUpperCase() + ' ' + currentUser.surname[0].toUpperCase();
     }
-    console.log('dd', window.location)
-    currentPath.innerHTML = nameByPath[window.location.pathname.split('/')[1]]
+    currentPath.innerHTML = nameByPath[window.location.pathname.split('/')[1]] || '404';
 
 } else {
     window.location.href = '/login';
 }
-
-console.log(currentUser);
-
 
 const toggleDropdown = () => {
     isDropdownVisible = !isDropdownVisible;

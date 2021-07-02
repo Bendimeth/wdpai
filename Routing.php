@@ -22,7 +22,11 @@ class Routing {
         $action = explode("/", $url)[0];
 
         if (!array_key_exists($action, self::$routes)) {
-            die("Wrong url");
+            if ($action === '') {
+                $action = 'main';
+            } else {
+                $action = 'notFound';
+            }
         }
 
         $controller = self::$routes[$action];

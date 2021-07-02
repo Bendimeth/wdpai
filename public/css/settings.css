@@ -1,15 +1,49 @@
 @import 'base.css';
 
 .settings-wrapper {
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
     position: relative;
 }
 
 .settings-body {
-    width: 100%;
-    padding: 80px 0;
+    height: 80%;
+    margin: 120px 20vw 0 20vw;
+    border-left: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    overflow: hidden;
+    display: flex;
+}
+
+.settings-body input {
+    margin: 0 0 1rem 0;
+}
+
+.settings-body form {
+    margin: 0 2rem 2rem 2rem ;
 }
 
 .settings-left, .settings-right {
     display: flex;
     flex-direction: column;
+    width: 50%;
+}
+
+.settings-body label {
+    margin: 0 0 .25rem 0;
+    display: block;
+}
+
+@media screen and (min-width: 300px) and (orientation: portrait) {
+    .settings-body {
+        margin: 120px 5vw 0 5vw;
+        border-left: none;
+        border-right: none;
+        flex-direction: column;
+    }
+
+    .settings-left, .settings-right {
+        width: 100%;
+    }
 }
