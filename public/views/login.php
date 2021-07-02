@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="login-wrapper">
-        <div class="login-header">
+        <div class="header">
             <div class="logo-wrapper">
                 <div>
                     <div class="logo"></div>

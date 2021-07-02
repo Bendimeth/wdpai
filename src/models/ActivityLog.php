@@ -27,6 +27,10 @@ class ActivityLog {
         return $this->description;
     }
 
+//    public function getId(): string {
+//        return $this->id;
+//    }
+
     public function setDescription(string $description): void {
         $this->description = $description;
     }

@@ -12,14 +12,137 @@ body {
     height: 100vh;
     overflow: hidden;
 	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
 }
 
 /* inputs */
 
-input {
+input, textarea {
 	padding: .5rem;
 	border: 1px solid #ccc;
 	border-radius: 5px;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+/*header*/
+
+.header {
+	display: flex;
+	justify-content: right;
+	position: fixed;
+	height: 80px;
+	width: 100%;
+	/*margin: 1rem 0 0 0;*/
+	background: #fff;
+	border: 1px solid #ccc;
+	box-shadow: #000 1px 0 3px;
+	align-items: center;
+}
+
+.user-details {
+	margin: 0 auto 0 2rem;
+}
+
+.user-photo-wrapper {
+	display: flex;
+	align-items: center;
+}
+
+.user-photo {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	border: 2px solid #ccc;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.toggle {
+	cursor: pointer;
+	padding: 1rem;
+}
+
+.dropdown {
+	display: none;
+	position: absolute;
+	background: #fff;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	top: 80px;
+	width: 200px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	z-index: 999999;
+}
+
+.option {
+	display: flex;
+	justify-items: flex-start;
+	align-items: center;
+	color: #5c5c5c;
+	cursor: pointer;
+	padding: 1rem;
+	transition: background-color .3s ease;
+	text-decoration: none;
+	border-bottom: 1px solid #ccc;
+}
+
+.option i {
+	margin: 0 .5rem 0 0;
+}
+
+.option:visited {
+	color: #5c5c5c;
+}
+
+.option:hover {
+	background: #ccc;
+	text-decoration: none;
+}
+
+.option:last-child {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.dropdown.dropdown-visible {
+	display: flex;
+	flex-direction: column;
+	justify-items: center;
+	border-bottom: none;
+}
+
+.logo-wrapper {
+	display: flex;
+	align-items: center;
+}
+
+.logo-wrapper > span {
+	background: #fff;
+	color: #5c5c5c;
+	font-size: 1.25rem;
+	margin: 0 0 0 .5rem;
+}
+
+.logo-wrapper > div {
+	border-radius: 5px;
+	width: 50px;
+	height: 50px;
+	margin: 0 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #fff;
+}
+
+.logo {
+	background: no-repeat url('../assets/images/logo.jpg');
+	background-size: cover;
+	width: 70%;
+	height: 80%;
 }
 
 /* popup */
@@ -74,6 +197,14 @@ button:hover {
 
 .no-valid:focus-visible {
 	outline: none;
+}
+
+.delete-button {
+	background: #cf0c0c;
+}
+
+.delete-button:hover {
+	background: #e60e0e;
 }
 
 /* queries */

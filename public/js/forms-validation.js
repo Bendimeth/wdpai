@@ -9,6 +9,11 @@ const nameInput = form.querySelector('input[name="name"]');
 const surnameInput = form.querySelector('input[name="surname"]');
 const passwordInput = form.querySelector('input[name="password"]');
 
+if (localStorage.getItem('currentUserId')) {
+    window.location.href = '/dashboard';
+}
+
+
 const showInputs = (formType) => {
     ['surname', 'name', 'confirmPassword'].forEach(name => {
         form.querySelector(`input[name=${name}]`).style.display = formType === 'login' ? 'none' : 'initial';
@@ -27,24 +32,11 @@ const setSubmitButtonMessage = message => {
     submitButton.innerHTML = message;
 }
 
-const setFormAction = (formType) => {
-    const action = document.createAttribute('action');
-    action.value = formType;
-
-    if (form.attributes.getNamedItem(formType)) {
-        form.attributes.removeNamedItem('action');
-    }
-
-    if (formType === 'login') {
-        form.attributes.setNamedItem(action);
-    }
-}
 
 let currentForm = 'login';
 
 setHintMessage('Create account');
 showInputs(currentForm);
-setFormAction(currentForm);
 
 
 const changeFormsButtonClick = changeFormsButton
@@ -60,7 +52,6 @@ const changeFormsButtonClick = changeFormsButton
             setHeaderMessage('Sign up');
             setSubmitButtonMessage('Create new account');
         }
-        setFormAction(currentForm);
         showInputs(currentForm);
     })
 
@@ -108,14 +99,14 @@ const registerNewUser = () => {
         !!nameInput.value &&
         !!surnameInput.value
     ) {
-        jQuery.post('src/utils/registerUser.php',{
+        jQuery.post('src/utils/registerUser.php', {
                 email: emailInput.value,
                 password: passwordInput.value,
                 name: nameInput.value,
                 surname: surnameInput.value
             },
             (response) => {
-            console.log(response);
+                console.log(response);
                 if (response === '0') {
                     document.querySelector('.info').innerHTML = 'New account created successfully, please sign in';
                     currentForm = 'login';
@@ -131,6 +122,31 @@ const registerNewUser = () => {
     }
 }
 
+const login = () => {
+    if (!emailInput.classList.contains('no-valid') &&
+        !!emailInput.value &&
+        !passwordInput.classList.contains('no-valid') &&
+        !!passwordInput.value) {
+        jQuery.post('src/utils/loginUser.php', {
+            email: emailInput.value,
+            password: passwordInput.value
+        }, response => {
+            console.log(response);
+            if (response === '1') {
+                document.querySelector('.info').innerHTML = 'Wrong name/password, please try again';
+            } else {
+                const userData = JSON.parse(response);
+                console.log(userData);
+                Object.keys(userData).forEach(key => {
+                    localStorage.setItem(key, userData[key]);
+                })
+
+                window.location.href = '/dashboard';
+            }
+        })
+    }
+}
+
 const onSubmit = () => {
-    currentForm === 'registration' && registerNewUser();
+    currentForm === 'registration' ? registerNewUser() : login();
 }

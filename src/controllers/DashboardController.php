@@ -16,11 +16,16 @@ class DashboardController extends AppController {
     public function __construct() {
         parent::__construct();
         $this->activityRepository = new ActivityRepository();
-        $this->activityLogs = $this->activityRepository->getActivities(1);
     }
 
     public function dashboard() {
-        $this->render('dashboard', ['activityLogs' => $this->activityLogs]);
+        if (!$_SESSION['id']) {
+            setcookie('test', 'elo', 86400, '/');
+            $this->render('dashboard');
+        } else {
+//            $this->activityLogs = $this->activityRepository->getActivities(1);
+            $this->render('dashboard', ['activityLogs' => $this->activityLogs]);
+        }
     }
 
     public function createLog() {

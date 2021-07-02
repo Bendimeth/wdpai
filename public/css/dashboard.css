@@ -1,2 +1,161 @@
 @import 'base.css';
 
+.dashboard-wrapper {
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.dashboard-body i {
+    margin: 0 .5rem 0 0;
+}
+
+.dashboard-body {
+    height: 80%;
+    margin: 120px 20vw 0 20vw;
+    border-left: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    overflow: hidden;
+}
+
+.dashboard-search {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin: 0 1rem 4rem 1rem;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.add-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.add-wrapper:hover i {
+    color: #385fd1;
+}
+
+.add-wrapper i {
+    font-size: 1.5rem;
+    color: #5574cf;
+    transition: color .3s ease;
+}
+
+.search-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.search-wrapper .dropdown {
+    top: 67px;
+    left: -50px;
+}
+
+.current-search {
+    position: relative;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup input, .popup textarea {
+    margin: .5rem 0 1rem 0;
+}
+
+.activity-list {
+    padding: 1rem;
+    overflow-y: scroll;
+    height: 80%;
+}
+
+.activity-item {
+    display: flex;
+    flex-direction: column;
+    background: #fafafa;
+    border-radius: 5px;
+    width: 100%;
+    margin: 0 0 2rem 0;
+    min-height: 200px;
+    box-shadow: #ccc 2px 0 5px;
+}
+
+.activity-photo-wrapper {
+    border-top: 1px solid #ccc;
+    margin: .5rem 0 0 0;
+    padding: .5rem 0 0 0;
+}
+
+.activity-photo-wrapper div:last-child {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 200px;
+}
+
+.activity-description div:last-child {
+    font-size: 1.25rem;
+    margin: 1rem 0;
+}
+
+.section-label {
+    color: #5c5c5c;
+    font-weight: 500;
+    font-size: .75rem;
+    margin: 0 0 .5rem 0;
+}
+
+.activity-header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.activity-header .title {
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.activity-footer {
+    height: 50px;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.activity-body {
+    height: 100%;
+    margin: 1rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 300px) and (orientation: portrait) {
+    .dashboard-body {
+        height: 80%;
+        margin: 120px 5vw 0 5vw;
+        border-left: none;
+        border-right: none;
+    }
+
+    .dashboard-search {
+        flex-direction: column;
+    }
+
+    .search-wrapper .dropdown {
+        top: 67px;
+        left: unset;
+    }
+
+    .search-title {
+        display: none;
+    }
+}

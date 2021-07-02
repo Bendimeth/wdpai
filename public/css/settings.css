@@ -1,1 +1,15 @@
 @import 'base.css';
+
+.settings-wrapper {
+    position: relative;
+}
+
+.settings-body {
+    width: 100%;
+    padding: 80px 0;
+}
+
+.settings-left, .settings-right {
+    display: flex;
+    flex-direction: column;
+}

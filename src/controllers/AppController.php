@@ -15,7 +15,7 @@ class AppController {
         return $this->request === 'GET';
     }
 
-    protected function render(string $template = null, array $variables = []) {
+    public function render(string $template = null, array $variables = []) {
         $templatePath = 'public/views/'.$template.'.php';
         $output = 'File not found';
 
@@ -27,5 +27,6 @@ class AppController {
             $output = ob_get_clean();
         }
         print $output;
+        var_dump($templatePath);
     }
 }
